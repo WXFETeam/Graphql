@@ -1,20 +1,13 @@
-// 引入mongoose模块
-import mongoose from 'mongoose'
-import config from '../config'
+const mongoose = require('mongoose')
+const config = require('../config')
 
-// const mongoose = require('mongoose')
-// const config = require('../config')
-
-// 同步引入 info model和 studen model
 require('./schema/info')
 require('./schema/student')
+require('./schema/course')
 
-// 链接mongodb
-export const database = () => {
+const database = () => {
   mongoose.set('debug', true)
-
   mongoose.connect(config.dbPath)
-
   mongoose.connection.on('disconnected', () => {
     mongoose.connect(config.dbPath)
   })
@@ -26,3 +19,5 @@ export const database = () => {
     console.log('Connected to MongoDB ', config.dbPath)
   })
 }
+
+database()

@@ -19,7 +19,7 @@ import { graphql, ApolloProvider } from 'react-apollo';
 // const mockNetworkInterface = mockNetworkInterfaceWithSchema({ schema });
 
 const client = new ApolloClient({
-  uri: "https://48p1r2roz4.sse.codesandbox.io",
+  uri: "http://localhost:4000/graphql",
 });
 
 
@@ -50,8 +50,10 @@ const ChannelsList = ({ loading, error, data }) => {
 
 const channelsListQuery = gql`
    query ChannelsListQuery {
-    rates(currency: "CNY") {
-      currency
+    student() {
+      name
+      sex
+      age
     }
    }
  `;

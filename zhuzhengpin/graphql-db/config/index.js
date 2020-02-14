@@ -1,3 +1,3 @@
-export default {
-    dbPath: 'mongodb://localhost/graphql'
+module.exports = {
+  dbPath: 'mongodb://localhost/graphql'
 }
