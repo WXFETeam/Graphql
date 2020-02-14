@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http - equiv="X-UA-Compatible" content="ie=edge">
+    <title> graphql demo
+    </title>
+</head>
+
+<body>
+    <button class="test"> 获取当前用户数据
+    </button>
+    <p class="username">
+    </p>
+    <p class="age">
+    </p>
+</body>
+<script>
+    var test = document.querySelector('.test');
+    test.onclick = function() {
+        var username = document.querySelector('.username');
+        var age = document.querySelector('.age');
+        fetch('http://localhost:3300/graphql', {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify({
+                query: `{ username, age, }`
+            }),
+            mode: 'cors' // no-cors, cors, *same-origin }) .then(function(response) { return
+            response.json();
+        }).then(function(res) {
+            console.log('返回结果', res);
+            username.innerHTML = `姓名：${res.data.username}`;
+            age.innerHTML = `年龄：${res.data.age}`
+        }).catch(err => {
+            console.error('错误',
+                err);
+        });
+    }
+</script>
+
+</html>
